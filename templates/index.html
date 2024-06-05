@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Server</title>
+  <link rel="stylesheet" href="static/jquery-ui.min.css">
+  <link rel="stylesheet" href="static/style.css">
+  <script src="static/jquery-3.2.1.min.js"></script>
+  <script src="static/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.min.js"></script>
+  <script src="static/libs/plotly-latest.min.js"></script>
+  <script src="static/libs/gauge.min.js"></script>
+  <script src="static/app.js"></script>
+</head>
+<body>
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-0">HOME</a></li>
+      <li><a href="#tabs-1">Numeric</a></li>
+      <li><a href="#tabs-2">Graph</a></li>
+      <li><a href="#tabs-3">Analog</a></li>
+      <li><a href="#tabs-4">File Data</a></li>
+    </ul>
+
+    <div id="tabs-0">
+      
+      <div class='container'><h1>HOME PAGE</h1></div>
+      <div class='container'><h2>POIT</h2></div>
+
+      <h3 id="con">Disconnected</h3>
+      <button id="connectbtn" type="submit">OPEN</button>
+
+      <form id="disconnect" method="POST" action="#">
+        <input type="submit" value="Disconnect" id="disconnectbtn">
+      </form>
+      
+        <div class='container'>
+    <h2>Set Temperature</h2>
+    <form id="buttonVal" method="POST" action="#">
+      <input type="text" name="emit_value" id="emit_value" placeholder="Temperature">
+      <input type="submit" value="send">
+    </form>
+    <h3 id="ac-status">AC heating/cooling: </h3>
+  </div>
+    </div>
+
+    <div id="tabs-1">
+      <div class='container'><h1>MEASURED VALUES</h1></div>
+      <button class="button1" type="submit" value="start">START</button>
+      <button class="button2" type="submit" value="stop">STOP</button>
+      <h2>Receive:</h2>
+      <div id="log"></div>
+    </div>
+
+    <div id="tabs-2">
+      <div class='container'><h1>DISPLAY GRAPHS</h1>
+        <button class="button1" type="submit" value="start">START</button>
+        <button class="button2" type="submit" value="stop">STOP</button>
+        <div id="plotdiv" style="width:1200px;height:500px;"></div>
+      </div>
+    </div>
+
+    <div id="tabs-3">
+      <div class='container'><h1>GAUGES</h1></div>
+      <div class='centercif'>
+        <canvas id="canvasTemp"></canvas> <span class="hspacecif"></span>
+        <canvas id="canvasHum"></canvas>
+      </div>
+    </div>
+
+    <div id="tabs-4">
+      <div class='container'><h1>FILE DATA</h1></div>
+      <button id="load-file-data" onclick="loadFileData()">LOAD FILE DATA</button>
+      <div id="file-log"></div>
+      <div id="file-plotdiv" style="width:1200px;height:500px;"></div>
+    </div>
+  </div>
+
+ 
+
+</body>
+</html>
